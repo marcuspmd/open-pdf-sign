@@ -73,6 +73,10 @@ public class SignatureParameters {
     @JsonProperty("label-signee")
     private String labelSignee;
 
+    @Parameter(required = false, names={"--signee"}, description = "String for 'signee' row")
+    @JsonProperty("signee")
+    private String signee;
+
     @Parameter(required = false, names={"--tsa"}, description = "use specific time stamping authority as source (if multiple given, will be used in given order as fallback)")
     @JsonProperty("tsa")
     private List<String> TSA = new LinkedList<>();
