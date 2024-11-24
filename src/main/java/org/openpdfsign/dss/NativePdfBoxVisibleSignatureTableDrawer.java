@@ -1,10 +1,12 @@
 package org.openpdfsign.dss;
 
-import eu.europa.esig.dss.model.DSSDocument;
-import eu.europa.esig.dss.pdf.pdfbox.visible.nativedrawer.NativePdfBoxVisibleSignatureDrawer;
-import eu.europa.esig.dss.pdf.visible.ImageRotationUtils;
-import eu.europa.esig.dss.pdf.visible.ImageUtils;
-import eu.europa.esig.dss.pdf.visible.SignatureFieldDimensionAndPosition;
+import java.awt.Color;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
 import org.apache.pdfbox.io.IOUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -31,12 +33,11 @@ import org.vandeseer.easytable.structure.Table;
 import org.vandeseer.easytable.structure.cell.ImageCell;
 import org.vandeseer.easytable.structure.cell.TextCell;
 
-import java.awt.*;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
+import eu.europa.esig.dss.model.DSSDocument;
+import eu.europa.esig.dss.pdf.pdfbox.visible.nativedrawer.NativePdfBoxVisibleSignatureDrawer;
+import eu.europa.esig.dss.pdf.visible.ImageRotationUtils;
+import eu.europa.esig.dss.pdf.visible.ImageUtils;
+import eu.europa.esig.dss.pdf.visible.SignatureFieldDimensionAndPosition;
 
 public class NativePdfBoxVisibleSignatureTableDrawer extends NativePdfBoxVisibleSignatureDrawer {
 
@@ -100,14 +101,14 @@ public class NativePdfBoxVisibleSignatureTableDrawer extends NativePdfBoxVisible
                         .addColumnsOfWidth(imageColumnWidth, labelColumnWidth, (tableWidth - imageColumnWidth - labelColumnWidth))
                         .backgroundColor(Color.WHITE)
                         .borderWidth(0.75f)
-                        .padding(5)
+                        .padding(2)
                         .fontSize(8)
                         .verticalAlignment(VerticalAlignment.TOP)
                         .addRow(Row.builder()
                                 .add(ImageCell.builder().image(imageXObject).maxHeight(75)
                                         .verticalAlignment(VerticalAlignment.MIDDLE).horizontalAlignment(HorizontalAlignment.CENTER).rowSpan((hasHint ? 3 : 2)).build())
                                 .add(TextCell.builder().text(tableParameters.getLabelSignee()).font(PDType1Font.HELVETICA_BOLD).horizontalAlignment(HorizontalAlignment.RIGHT).build())
-                                .add(TextCell.builder().text(tableParameters.getSignatureString()).build())
+                                .add(TextCell.builder().text(tableParameters.getSignaturString()).build())
                                 .build())
                         .addRow(Row.builder()
                                 //.height(100f)
