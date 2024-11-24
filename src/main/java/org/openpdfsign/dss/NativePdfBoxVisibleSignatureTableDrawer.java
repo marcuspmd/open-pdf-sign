@@ -107,7 +107,7 @@ public class NativePdfBoxVisibleSignatureTableDrawer extends NativePdfBoxVisible
                                 .add(ImageCell.builder().image(imageXObject).maxHeight(75)
                                         .verticalAlignment(VerticalAlignment.MIDDLE).horizontalAlignment(HorizontalAlignment.CENTER).rowSpan((hasHint ? 3 : 2)).build())
                                 .add(TextCell.builder().text(tableParameters.getLabelSignee()).font(PDType1Font.HELVETICA_BOLD).horizontalAlignment(HorizontalAlignment.RIGHT).build())
-                                .add(TextCell.builder().text(tableParameters.getSignaturString()).build())
+                                .add(TextCell.builder().text(tableParameters.getSignatureString()).build())
                                 .build())
                         .addRow(Row.builder()
                                 //.height(100f)

@@ -64,7 +64,7 @@ public class Signer {
 
         log.debug("Keystore created for signing");
         //PAdES parameters
-        PAdESSignatureParameters signatureParameters = new getUseLTA();
+        PAdESSignatureParameters signatureParameters = new PAdESSignatureParameters();
         //signatureParameters.bLevel().setSigningDate(new Date());
         String keyAlias = "alias";
         if (signingToken.getKeys().get(0) instanceof KSPrivateKeyEntry) {
@@ -203,7 +203,7 @@ public class Signer {
             }
             fieldParameters.setSignatureDate(formatter.format(signatureParameters.getSigningDate().toInstant()));
             // fieldParameters.setSignaturString(signingToken.getKey(keyAlias).getCertificate().getSubject().getPrettyPrintRFC2253());
-            fieldParameters.setSignaturString(ObjectUtils.firstNonNull(params.getLabelHint(), signingToken.getKey(keyAlias).getCertificate().getSubject().getPrettyPrintRFC2253()));
+            fieldParameters.setSignatureString(ObjectUtils.firstNonNull(params.getLabelHint(), signingToken.getKey(keyAlias).getCertificate().getSubject().getPrettyPrintRFC2253()));
             fieldParameters.setLabelHint(ObjectUtils.firstNonNull(params.getLabelHint(), Configuration.getInstance().getResourceBundle().getString("hint")));
             fieldParameters.setLabelSignee(ObjectUtils.firstNonNull(params.getLabelSignee(), Configuration.getInstance().getResourceBundle().getString("signee")));
             fieldParameters.setLabelTimestamp(ObjectUtils.firstNonNull(params.getLabelTimestamp(), Configuration.getInstance().getResourceBundle().getString("timestamp")));

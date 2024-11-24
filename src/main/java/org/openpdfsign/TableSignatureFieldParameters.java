@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 public class TableSignatureFieldParameters extends SignatureFieldParameters  {
     private String signatureDate;
-    private String signaturString;
+    private String signatureString;
     private String hint;
     private String labelHint;
     private String labelSignee;
